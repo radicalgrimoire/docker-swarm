@@ -1,0 +1,25 @@
+# ApacheWebサーバー側SSL化運用時設定
+# 構成見本
+<VirtualHost swarm-server:443>
+    SSLEngine on
+    SSLCertificateFile /etc/apache2/ssl/server.crt
+    SSLCertificateKeyFile /etc/apache2/ssl/server.key
+
+    ServerName localhost
+    AllowEncodedSlashes NoDecode
+    ServerAlias localhost
+    ErrorLog "/var/log/apache2/swarm.error_log"
+    CustomLog "/var/log/apache2/swarm.access_log" common
+    DocumentRoot "/opt/perforce/swarm/public"
+
+    <Directory "/opt/perforce/swarm/public">
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+</VirtualHost>
+
+<VirtualHost swarm-server:80>
+    ServerName localhost
+    Redirect / https://localhost
+</VirtualHost>

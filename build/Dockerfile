@@ -1,6 +1,8 @@
 FROM ubuntu:noble
 LABEL org.opencontainers.image.maintainer="ueno.s <ueno.s@gamestudio.co.jp>"
 
+ENV P4PORT=ssl:1666
+
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && apt-get update -y \
     && apt-get upgrade -y \

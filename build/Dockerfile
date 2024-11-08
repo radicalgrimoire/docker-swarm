@@ -20,6 +20,4 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
 ADD ["server_run.sh", "server_run.sh"]
 ADD ["server_init.sh", "server_init.sh"]
 ADD ["swarm_init", "swarm_init"]
-RUN chmod +x server_run.sh server_init.sh swarm_init
-RUN bash -c "./server_init.sh"
 CMD ["bash", "-c", "./server_run.sh"]
